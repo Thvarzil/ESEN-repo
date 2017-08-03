@@ -1,5 +1,5 @@
 body{
-    background: midnightblue;
+    background: rgb(31, 54 ,91);
 }
 
 .navbar{
@@ -31,4 +31,23 @@ body{
 
 label{
     color: black;
+}
+
+#accountPictureBox{
+    padding: 15px;
+    background: rgba(245, 245, 245, 0.8);
+    border-radius: 15px;
+}
+
+
+#accountphoto{
+    width: 100%;
+}
+
+.playedGame{
+    height: 50px;
+}
+
+.gameBtn{
+    margin: 5px;
 }
