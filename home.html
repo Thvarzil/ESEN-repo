@@ -5,7 +5,7 @@
 <head>
 
     <meta charset="UTF-8">
-    <title>Sign-Up Today!</title>
+    <title>ESEN</title>
 
     <!--Firebase link-->
 
@@ -15,6 +15,7 @@
 
     <!--Link CSS and Bootstrap-->
     <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/materialize.css">
     <link rel="stylesheet" href="assets/css/styles.css">
 
 </head>
@@ -28,7 +29,7 @@
                 aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="#">ESEN</a>
+        <a class="navbar-brand" href="#"><img id="logo" src="assets/esenLogo.png"></a>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
@@ -48,6 +49,24 @@
     </aside>
 
     <div class="jumbotron newsfeed col-lg-8 col-lg-push-1 col-sm-12">
+        <!--Test of Materialize modals my duderino-->
+        <!-- Modal Trigger -->
+        <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+
+        <!-- Modal Structure -->
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <h4>Modal Header</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi faucibus iaculis erat, condimentum
+                    commodo elit fringilla id. Cras sollicitudin sapien et ornare efficitur. Sed eu nulla sed arcu
+                    ornare ultricies. Aenean quis nibh ut velit ullamcorper iaculis eget sed quam. Vestibulum sed
+                    elementum risus. Aliquam sodales diam eu orci sodales ullamcorper. Duis volutpat tincidunt tellus,
+                    sed congue dui dapibus et.</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+            </div>
+        </div>
         <!--Sub divs populated in here with news blurbs for your teams, one div per blurb-->
     </div>
 
