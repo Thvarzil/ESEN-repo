@@ -39,28 +39,22 @@
 </header>
 
 
+<div class="carousel carousel-slider">
+    <a class="carousel-item" href="#one!"><img src="assets/Lolsamplescreen.jpg"></a>
+    <a class="carousel-item" href="#two!"><img src="assets/dotasamplescreen.jpg"></a>
+    <a class="carousel-item" href="#three!"><img src="assets/csgosamplescreen.png"></a>
+    <a class="carousel-item" href="#four!"><img src="assets/lol_promoart_6.jpg"></a>
+    <a class="carousel-item" href="#five!"><img src="assets/dotasamplepicture.jpg"></a>
+</div>
+
 <div class="row">
 
     <aside class="jumbotron col-lg-3  col-sm-6">
 
     </aside>
 
-    <div class="jumbotron newsfeed col-lg-8 col-lg-push-1 col-sm-12">
-        <!--&lt;!&ndash; Modal Trigger &ndash;&gt;-->
-        <!--<a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>-->
+    <div class="jumbotron newsfeed col-lg-8 col-lg-push-1 col-sm-12"></div>
 
-        <!--&lt;!&ndash; Modal Structure &ndash;&gt;-->
-        <!--<div id="modal1" class="modal">-->
-            <!--<div class="modal-content">-->
-                <!--<h4>Modal Header</h4>-->
-                <!--<p>A bunch of text</p>-->
-            <!--</div>-->
-            <!--<div class="modal-footer">-->
-                <!--<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--Sub divs populated in here with news blurbs for your teams, one div per blurb-->
-    </div>
 
 
 </div>
@@ -68,18 +62,8 @@
 
 
 <!--Initializes modals to make up for Materialize omission-->
-<script>(function ($) {
-    $(function () {
-
-        //initialize all modals
-        $('.modal').modal();
-
-        //now you can open modal from code
-        $('#modal1').modal('open');
-
-        //or by click on trigger
-        $('.trigger-modal').modal();
-
-    }); // end of document ready
-})(jQuery);</script>
+<script>
+    $(document).ready(function(){
+        $('.carousel').carousel();
+    });</script>
 </body>

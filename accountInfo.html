@@ -39,7 +39,9 @@
     <div class="col-md-7 col-md-push-1 col-md-pull-1 col-sm-12 accountBox panel panel-default">
         <div class="panel-heading"><h2 class="panel-title">Sample McSampleton</h2></div>
         <div class="panel-body">
-            <div class="row"><img class="playedGame" src="assets/League_of_Legends_Icon.png"> CSLogo, DOTALogo</div>
+            <div class="row text-center" id="playedGameBox" ><img class="playedGame" src="assets/League_of_Legends_Icon.png"> <img class="playedGame"
+                                                                                                   src="assets/Counter-Strike-PNG-HD.png">
+                <img class="playedGame" src="assets/dota_2.png"></div>
             <div class="row">Hi my name is Sample and I like cool E-Sports like League of Legends, Counterstrike and
                 DOTA!! ESEN is the coolest website!
             </div>
@@ -69,7 +71,8 @@
             </div>
             <div class="panel-body gamePanel">
                 <button class="btn btn-default gameBtn" data-game="League of Legends">League of Legends</button>
-                <button class="btn btn-default gameBtn" data-game="Defense of the Ancients">Defense of the Ancients</button>
+                <button class="btn btn-default gameBtn" data-game="Defense of the Ancients">Defense of the Ancients
+                </button>
                 <button class="btn btn-default gameBtn" data-game="Counter Strike">Counter Strike</button>
             </div>
         </div>
@@ -94,7 +97,14 @@
 <script type="text/javascript" src="assets/js/accountInfoModal.js"></script>
 
 <!--Initializes modals to make up for Materialize omission-->
-<script>(function ($) {
+<script>
+    $(document).ready(function(){
+        $('.carousel').carousel();
+    });
+
+    (function ($) {
+
+    $(document).on("ready",
     $(function () {
 
         //initialize all modals
@@ -106,7 +116,7 @@
         //or by click on trigger
         $('.trigger-modal').modal();
 
-    }); // end of document ready
+    })); // end of document ready
 })(jQuery);</script>
 </body>
 </html>
