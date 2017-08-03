@@ -16,6 +16,10 @@ body{
     overflow: hidden;
 }
 
+.nav-item{
+    margin: 0 10px 0 10px;
+}
+
 #logo{
     height: inherit;
     width: auto;
@@ -23,4 +27,8 @@ body{
 
 .panel{
     background: rgba(245, 245, 245, 0.6);
+}
+
+label{
+    color: black;
 }
