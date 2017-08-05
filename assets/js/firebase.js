@@ -17,32 +17,25 @@
   var password;
   var inputEmail;
   var inputPw;
-  var database = database.firebase;
+  var database = firebase.database();
+
 
   //collect data from form and store in firebase
   $("#add-user").on("click", function(){
-    //Store username
-    username = function(){
-      //compare username
-      //if username is the same as another username
-      //do not store and alert user to change his username
-      //else store username
-    }
-    //Store email
-      //compare email
-      //if username is the same as another
-      //do not store and alert user to change email
-      //else store email
-    //store password
-      //compare password
-      //if username is the same as another
-      //do not store and alert user to change password
-      //else store password
+    //store variables
+    var username = $("#name-input").val().trim();
+      console.log(username);
+    var email = $("#email-input").val().trim();
+      console.log(email);
+    var password = $("#password-input").val().trim();
+      console.log(password);
+    //avoid duplicates
+    
     //push to database
     database.ref().push({
-      userName: username;
-      eMail: email;
-      passWord: password;
+      userName: username,
+      eMail: email,
+      passWord: password,
     });
   });
 //member signin

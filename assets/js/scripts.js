@@ -18,5 +18,5 @@
   var password;
   var inputEmail;
   var inputPw;
-  var database = database.firebase;
-//====================================================
+  var database = firebase.database();
+  //====================================================
