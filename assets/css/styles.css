@@ -72,11 +72,7 @@ label{
 
 }
 
-@media only screen and (max-width: 1120px) {
-    .carousel-item{
-        width: 100% !important;
-    }
-}
+
 
 footer{
     position: fixed;
@@ -89,6 +85,20 @@ footer{
 
 .logo{
     height: 50px;
+}
+
+@media only screen and (max-width: 1120px) {
+    .carousel-item{
+        width: 100% !important;
+    }
+
+    footer{
+        display:none;
+    }
+}
+
+.infodiv{
+    margin: 10ox;
 }
 
 /*.carousel{*/

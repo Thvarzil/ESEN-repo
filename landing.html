@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>ESEN</title>
+
+    <!--Firebase link-->
+
+    <!--Link JS and JQuery-->
+    <script type="text/javascript" src="assets/js/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="js/materialize.js"></script>
+    <script type="text/javascript" src="assets/js/scripts.js"></script>
+
+    <!--Link CSS and Bootstrap-->
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/materialize.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+</head>
+
+<body>
+
+<header>
+    <nav class="navbar navbar-light bg-faded">
+
+        <a class="navbar-brand disabled" href="#"><img id="logo" src="assets/esenLogo.png"></a>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link waves-effect waves-teal btn-flat text-white" href="accountInfo.html">My Account</a>
+                <a class="nav-item nav-link waves-effect waves-teal btn-flat text-white" href="http://www.lolesports.com/en_US/">LoL ESports</a>
+                <a class="nav-item nav-link waves-effect waves-teal btn-flat text-white" href="https://www.dotabuff.com/esports">DOTABuff ESports</a>
+                <a class="nav-item nav-link waves-effect waves-teal btn-flat text-white" href="https://play.eslgaming.com/counterstrike/csgo">ESL Gaming CS ESports</a>
+
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+<div id="homecarousel" class="carousel">
+    <a class="carousel-item" ><img src="assets/Lolsamplescreen.jpg"></a>
+    <a class="carousel-item" ><img src="assets/dotasamplescreen.jpg"></a>
+    <a class="carousel-item" ><img src="assets/csgosamplescreen.png"></a>
+    <a class="carousel-item" ><img src="assets/lol_promoart_6.jpg"></a>
+    <a class="carousel-item" ><img src="assets/dotasamplepicture.jpg"></a>
+</div>
+
+<div class="row">
+
+    <aside class="jumbotron col-lg-3  col-sm-6">
+
+    </aside>
+
+    <div class="jumbotron newsfeed col-lg-8 col-lg-push-1 col-sm-12"></div>
+
+
+
+</div>
+
+
+
+<!--Initializes modals to make up for Materialize omission-->
+<script>
+    $(document).ready(function(){
+        $('.carousel').carousel();
+    });</script>
+</body>

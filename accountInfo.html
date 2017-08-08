@@ -18,10 +18,10 @@
 <header>
     <nav class="navbar navbar-light bg-faded">
 
-        <a class="navbar-brand" href="index.html"><img id="logo" src="assets/esenLogo.png"></a>
+        <a class="navbar-brand" href="# "><img id="logo" src="assets/esenLogo.png"></a>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link waves-effect waves-teal btn-flat text-white" href="accountInfo.html">My Account</a>
+                <a class="nav-item nav-link waves-effect waves-teal btn-flat text-white" href="landing.html">Home</a>
                 <a class="nav-item nav-link waves-effect waves-teal btn-flat text-white" href="http://www.lolesports.com/en_US/">LoL ESports</a>
                 <a class="nav-item nav-link waves-effect waves-teal btn-flat text-white" href="https://www.dotabuff.com/esports">DOTABuff ESports</a>
                 <a class="nav-item nav-link waves-effect waves-teal btn-flat text-white" href="https://play.eslgaming.com/counterstrike/csgo">ESL Gaming CS ESports</a>
@@ -51,10 +51,9 @@
 <div class="row">
     <div class="col-md-7 col-md-push-4 col-md-pull-1 col-sm-12 panel panel-default" >
         <div class="panel-heading">
-            <h2 class="panel-title">My Favorites</h2>
+            <h2 class="panel-title">My Favorites <a class="waves-effect waves-light btn btn-flat modal-trigger" id="modalBtn" href="#modal1"><span class="glyphicon glyphicon-pencil"></span></a></h2>
         </div>
         <div class="panel-body" id="interestBox">
-            <p>Heres is some filler text so yeah</p>
         </div>
     </div>
 </div>
@@ -63,7 +62,7 @@
 
 
 <!-- Modal Trigger -->
-<a class="waves-effect waves-light btn modal-trigger" id="modalBtn" href="#modal1">Interest Selection</a>
+
 
 <!-- Modal Structure -->
 <div id="modal1" class="modal modal-fixed-footer">
@@ -79,11 +78,11 @@
         <!--This panel contains game options-->
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h5 class="panel-title">Ganes</h5>
+                <h5 class="panel-title">Games</h5>
             </div>
             <div class="panel-body gamePanel">
                 <button class="btn btn-default gameBtn" data-game="League of Legends">League of Legends</button>
-                <button class="btn btn-default gameBtn" data-game="Defense of the Ancients">Defense of the Ancients
+                <button class="btn btn-default gameBtn" data-game="Defense of the Ancients">DOTA 2
                 </button>
                 <button class="btn btn-default gameBtn" data-game="Counter Strike">Counter Strike</button>
             </div>
@@ -97,7 +96,7 @@
         </div>
     </div>
     <div class="modal-footer">
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+        <a href="#!" id="modal-close" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
     </div>
 </div>
 
@@ -127,7 +126,7 @@
         $('.modal').modal();
 
         //now you can open modal from code
-        $('#modal1').modal('open');
+
 
         //or by click on trigger
         $('.trigger-modal').modal();
