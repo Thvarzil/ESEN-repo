@@ -104,6 +104,20 @@ function teamBtnClicked(input, target) {
 }
 
 
+function populateFavorites(){
+    $("#interestBox").empty();
+
+    var gamediv = $("<div>");
+    gamediv.attr("class", "infodiv");
+    var teamdiv = $("<div>");
+    teamdiv.attr("class", "infodiv");
+
+    gamediv.text("Games: " + chosen.games);
+    teamdiv.text("Teams: " + chosen.teams);
+
+    $("#interestBox").append(gamediv, teamdiv);
+}
+
 $(".gameBtn").on("click", function () {
     var target = this;
     var choice = target.dataset.game;
@@ -114,4 +128,12 @@ $(document).on("click", ".teamBtn", function () {
     var target = this;
     var choice = target.dataset.team;
     teamBtnClicked(choice, target);
+});
+
+$(document).on("ready", function(){
+    populateFavorites();
+});
+
+$("#modal-close").on("click", function(){
+    populateFavorites();
 });
