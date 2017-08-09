@@ -13,53 +13,77 @@
  //sign-up
   //Variables
   var database = firebase.database();
-  var userlist = null;
+//   var userlist = null;
 
-//==================NOT SURE WHAT THIS DOES======================
-//below says that it is referencing the /user branch in firebase
-//snapshot...I don't know what that means.
-database.ref("/users").on("value", function(snapshot) {
-  userlist = snapshot.val();
-  // Print the local data to the console.
-}, function(errorObject) {
-  console.log("The read failed: " + errorObject.code);
-});
+
+// //==================NOT SURE WHAT THIS DOES======================
+// //below says that it is referencing the /user branch in firebase
+// //snapshot...I don't know what that means.
+// database.ref("/users").on("value", function(snapshot) {
+//   userlist = snapshot.val();
+//   // Print the local data to the console.
+// }, function(errorObject) {
+//   console.log("The read failed: " + errorObject.code);
+// });
 //=================================================================
 
 //===============ON CLICK on SIGN UP FORM====================================
   //collect data from form and store in firebase
-  $("#add-user").on("click", function(noReset){
-    noReset.preventDefault();
-    //store variables
-    var inputuser = $("#name-input").val().trim();
-      console.log(inputuser);
-    var inputemail = $("#email-input").val().trim();
-      console.log(inputemail);
-    var inputpassword = $("#password-input").val().trim();
-      console.log(inputpassword);
-    //===================adding LOGIN=================================
-    //setting userExists at false so that second if function doesn' run by default.
-    var userExists = false;
-    var emailused = false;
-    //using a for each loop because firebase doesn't like arrays
-    //the parameters key and value are default. They refer to what you would see in a table.
-    $.each( userlist, function( key, value ) {
-      if(value.username === inputuser && value.email === inputemail){
-        alert("Username or email already used. Please try again.");
-        userExists= true;
-        emailused = true;
+
+
+  $('#add-user').on('click', function(e){
+    e.preventDefault();
+    console.log('add user got clicked');
+    var data;
+    var username = $('#name-input').val().trim();
+    var email = $("#email-input").val().trim();;
+    var password = $("#password-input").val().trim();;
+    var loginState = false;
+
+    // ===================adding LOGIN=================================
+    database.ref("/users").once("value", function(snapshot){
+      
+      //parse list string...this creates an array on firebase
+      data =snapshot.val().users;
+
+      data = JSON.parse(data);
+      
+      if(data === null){
+        data = [];
+      }
+
+      //log string to console
+      console.log(data);
+      for (var i = 0; i < data.length; i++) {
+        if (data[i].email === email) {
+          alert("There is already an account associated with that email.");
         }
-      });
-    //The !userExists means that userExists is set to false
-    if(!userExists && !emailused){
-      //pushes info to the database
-      alert("User added!");
-        database.ref("/users").push({
-      username : inputuser,
-      email: inputemail,
-      passWord: inputpassword,
-    }); 
-    }
+        // if (data[i].password === password) {
+        //   alert("There is already an account associated with that password.");
+        // }
+        if (data[i].email === email && data[i].password === password) {
+          alert("You already have an account. Both email and password match, therefore you will be logged in.");
+          loginState = true;
+        }
+      };
+      if (!loginState) {
+          //add new users to list
+          data.push({username: username
+                     ,email: email
+                     ,password: password});
+        //stringify data 
+        console.log(data);
+        var storeData = JSON.stringify(data);
+        console.log(storeData);
+        //Set Data
+        database.ref("/users").set({
+          //adds stringified data to array in firebase 
+          users: storeData
+        });
+      }else{
+        alert("You have been logged in!");
+      }
+    });
     //==================end of 'adding LOGIN'===================
 });
 //======================END OF SIGN UP ON CLICK=========================================
@@ -67,31 +91,27 @@ database.ref("/users").on("value", function(snapshot) {
 
 
 //=====================MEMBER SIGN IN=====================
-//collect data from form and store in firebase
-  $("#sigin").on("click", function(noReset){
+//collect data from form and compare with data already in firebase
+  $('#signin').on('click', function(noReset){
     noReset.preventDefault();
-    //store variables
-    var memberemail = $("#email-signin").val().trim();
-      console.log(memberemail);
-    var memberpassword = $("#password-signin").val().trim();
-      console.log(memberpassword);
 
-    //===================adding LOGIN=================================
-    //setting userExists at false so that second if function doesn' run by default.
-    var emailvalid = false;
-    var passwordvalid = false;
-    //using a for each loop because firebase doesn't like arrays
-    //the parameters key and value are default. They refer to what you would see in a table.
-    $.each( userlist, function( key, value ) {
-      if(value.email === memberemail && value.passWord === memberpassword){
-        alert("Welcome to the ESEN. Your page will be loaded shortly.");
-        emailvalid = true;
-        passwordvalid = true;
+    //store variables
+    var memberemail = $('#email-signin').val().trim();
+      console.log(memberemail);
+    var memberpassword = $('#password-signin').val().trim();
+      console.log(memberpassword);
+    // check data in firebase
+    database.ref('/users').once('value', function(snapshot){
+      data = snapshot.val();
+        if (data.users.email === memberemail && data.users.password === memberpassword) {
+          alert("Validated! You will be redirected to the member page.")
+          //>>>load next page<<<
+        }else{
+          alert("Your username or password is incorrect. Try again.")
         }
-      });
-    //The !emailvalid means that emailvalid is set to false
-    if(!emailvalid && !passwordvalid){
-      alert("Your Email or Password is not correct.");
-    };
+    });
   });
+    
+
+   
 //======================end of member sign in==============
