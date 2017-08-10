@@ -1,0 +1,70 @@
+```$('#check-button').on("click", function(){
+  var data = null;
+  //grab input
+  var name = $("#name").val();
+  var email = $("#email").val();
+  var password = $("#password").val();
+   //check data
+  database.ref("/users").once("value", function(myFace){
+      data = myFace.val();
+      //if equal to input give an amazing message
+        if(name === data.users.name)
+      {
+        alert("cool Name dude...");
+      }
+    });
+});
+
+$("#set-button").on("click", function() {
+  var data = null;
+  var name = $("#name").val();
+  var email = $("#email").val();
+  var password = $("#password").val(); 
+  var loginState = false;
+  //PULL DATA
+  database.ref("/users").once("value", function(snapshot){
+  // parse list string
+  data = JSON.parse(snapshot.val().users)
+  // log string to console
+  console.log(data);
+  for (var i = 0; i < data.length; i++) {
+    if(data[i].email === email && data[i].password === password){
+      console.log('they are the same!');
+      loginState = true;
+    }
+  }
+   if(!loginState){
+  // add new data to the list
+  data.push({name: name
+            ,email: email
+            ,password: password});
+  //strinify data in transfer prep
+  var strData = JSON.stringify(data);
+  //SET DATA
+  database.ref("/users").set({
+    // set strinified list to the user attribute
+    users: strData
+  });
+}else{
+  alert("you have been logged in!");
+}
+    });
+  //CHANGE DATA
+
+
+});
+
+// Whenever a user clicks the restart button
+$("#get-button").on("click", function() {
+
+  //When we get to this code it will run and get the stuff we want
+  database.ref("/users").once("value", function(snapshot){
+      var users = JSON.parse(snapshot.val().users);
+      for (var i = 0; i < users.length; i++) {
+        console.log(users[i]);
+      }
+    });
+
+  
+
+});```
