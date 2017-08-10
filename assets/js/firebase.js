@@ -13,6 +13,20 @@
  //sign-up
   //Variables
   var database = firebase.database();
+//   var userlist = null;
+
+
+// //==================NOT SURE WHAT THIS DOES======================
+// //below says that it is referencing the /user branch in firebase
+// //snapshot...I don't know what that means.
+// database.ref("/users").on("value", function(snapshot) {
+//   userlist = snapshot.val();
+//   // Print the local data to the console.
+// }, function(errorObject) {
+//   console.log("The read failed: " + errorObject.code);
+// });
+//=================================================================
+
 //===============ON CLICK on SIGN UP FORM====================================
   //collect data from form and store in firebase
 
@@ -79,6 +93,7 @@
 //collect data from form and compare with data already in firebase
   $('#signin').on('click', function(noReset){
     noReset.preventDefault();
+
     //store variables
     var memberemail = $('#email-signin').val().trim();
       console.log(memberemail);
@@ -101,7 +116,7 @@
               var passMatch = true;
               console.log(emailMatch);
               //>>>load next page<<<
-              window.location.href = "accountinfo.html";
+              window.location.href = "home.html";
             
             };
         };
