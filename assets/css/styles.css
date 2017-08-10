@@ -64,6 +64,10 @@ label{
     margin: 5px;
 }
 
+.carousel{
+    top: -119px;
+}
+
 .carousel .carousel-item {
     width:40% !important;
 }
@@ -98,7 +102,7 @@ footer{
 }
 
 .infodiv{
-    margin: 10ox;
+    margin: 10px;
 }
 
 /*.carousel{*/
