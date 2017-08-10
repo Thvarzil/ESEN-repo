@@ -89,6 +89,7 @@ footer{
 
 .logo{
     height: 50px;
+    margin: 10px;
 }
 
 @media only screen and (max-width: 1120px) {
@@ -104,6 +105,8 @@ footer{
 .infodiv{
     margin: 10px;
 }
+
+
 
 /*.carousel{*/
     /*width: 100%;*/
