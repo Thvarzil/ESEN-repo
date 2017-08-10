@@ -17,7 +17,7 @@
   //collect data from form and store in firebase
 
 
-  $('#add-user').on('click', function(e){
+  $('#modal-close').on('click', function(e){
     e.preventDefault();
     console.log('add user got clicked');
     var data;
@@ -101,7 +101,7 @@
               var passMatch = true;
               console.log(emailMatch);
               //>>>load next page<<<
-              window.location.href = "accountinfo.html";
+              window.location.href = "landing.html";
             
             };
         };
