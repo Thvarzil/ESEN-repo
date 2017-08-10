@@ -43,9 +43,8 @@
     // ===================adding LOGIN=================================
     database.ref("/users").once("value", function(snapshot){
       
-      //parse list string...this creates an array on firebase
-      data =snapshot.val().users;
-
+      data = snapshot.val().users;
+      //We need it as a JS object...so that it doesn't read it as a string we are parsing it here
       data = JSON.parse(data);
       
       if(data === null){
@@ -102,13 +101,32 @@
       console.log(memberpassword);
     // check data in firebase
     database.ref('/users').once('value', function(snapshot){
-      data = snapshot.val();
-        if (data.users.email === memberemail && data.users.password === memberpassword) {
-          alert("Validated! You will be redirected to the member page.")
-          //>>>load next page<<<
-        }else{
-          alert("Your username or password is incorrect. Try again.")
-        }
+        data = snapshot.val().users;
+        //We need it as a JS object...so that it doesn't read it as a string we are parsing it here
+        data = JSON.parse(data);
+        emailMatch = false;
+        passMatch = false;
+
+        for (var i = 0; i < data.length; i++) {
+            console.log(data[i]);
+            
+            if (data[i].email === memberemail && data[i].password === memberpassword) {
+              alert("Validated! You will be redirected to the member page.")
+              var emailMatch = true;
+              var passMatch = true;
+              console.log(emailMatch);
+              //>>>load next page<<<
+              window.location.href = "home.html";
+            
+            };
+        };
+          if (!emailMatch) {
+            alert("Your email doesn't match.");
+          };
+          if (!passMatch) {
+            alert("Your password doesn't match.");
+          }
+          
     });
   });
     
