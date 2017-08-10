@@ -7,8 +7,6 @@
     <meta charset="UTF-8">
     <title>Sign-Up Today!</title>
 
-
-
     <!--Link CSS and Bootstrap and Materialize-->
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <link rel="stylesheet" href="assets/css/materialize.css">
@@ -20,18 +18,13 @@
 
 <header>
     <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-                data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
-                aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand" href="#"><img id="logo" src="assets/esenLogo.png"></a>
+        <img id="logo" src="assets/esenLogo.png">
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link disabled" href="#">Home <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link disabled" href="#">Teams</a>
-                <a class="nav-item nav-link disabled" href="#">Tournaments</a>
-                <a class="nav-item nav-link disabled" href="#">Games</a>
+                <!--<a class="nav-item nav-link disabled" href="#">Home <span class="sr-only">(current)</span></a>-->
+                <!--<a class="nav-item nav-link disabled" href="#">Teams</a>-->
+                <!--<a class="nav-item nav-link disabled" href="#">Tournaments</a>-->
+                <!--<a class="nav-item nav-link disabled" href="#">Games</a>-->
             </div>
         </div>
     </nav>
@@ -85,12 +78,48 @@
                             <label for="password-input">Password:</label>
                             <input class="form-control" id="password-input" type="password">
                         </div>
-                        <button class="btn btn-default" id="add-user">Submit</button>
+                        <a class="waves-effect waves-light btn btn-flat modal-trigger" id="modalBtn" href="#modal1">Submit</a>
                     </form>
                 </div>
             </div>
         </div>
 
+    </div>
+</div>
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <h4>Select your interests:</h4>
+        <!--Selected Interests appear in this panel-->
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h5 class="panel-title">Chosen</h5>
+            </div>
+            <div class="panel-body chosenPanel"></div>
+        </div>
+        <!--This panel contains game options-->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h5 class="panel-title">Games</h5>
+            </div>
+            <div class="panel-body gamePanel">
+                <button class="btn btn-default gameBtn" data-game="League of Legends">League of Legends</button>
+                <button class="btn btn-default gameBtn" data-game="Defense of the Ancients">DOTA 2
+                </button>
+                <button class="btn btn-default gameBtn" data-game="Counter Strike">Counter Strike</button>
+            </div>
+        </div>
+        <!--This panel gets populated with team options after games are chosen-->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h5 class="panel-heading">Teams:</h5>
+            </div>
+            <div class="panel-body teamPanel"></div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" id="modal-close" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
     </div>
 </div>
 
@@ -101,8 +130,25 @@
 <!--Firebase link-->
 <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
 
-<!--Link JS and JQuery-->
-<script type="text/javascript" src="assets/js/jquery-3.2.1.js"></script>
-<!-- <script type="text/javascript" src="assets/js/scripts.js"></script> -->
-<script type="text/javascript" src="assets/js/firebase.js"></script>
+    <!--Link JS and JQuery-->
+    <script type="text/javascript" src="assets/js/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="js/materialize.js"></script>
+    <script type="text/javascript" src="assets/js/scripts.js"></script>
+<script>
+    $(document).on("ready",
+        $(function () {
+
+            //initialize all modals
+            $('.modal').modal();
+
+            //now you can open modal from code
+
+
+            //or by click on trigger
+            $('.trigger-modal').modal();
+
+        })); // end of document ready
+
+
+</script>
 </body>

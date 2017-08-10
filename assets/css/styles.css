@@ -1,5 +1,5 @@
 body{
-    background: darkslateblue;
+    background: rgb(31, 54 ,91);
 }
 
 .navbar{
@@ -16,11 +16,95 @@ body{
     overflow: hidden;
 }
 
+.nav-item{
+    margin: 0 10px 0 10px;
+}
+
 #logo{
     height: inherit;
     width: auto;
 }
 
 .panel{
-    background: rgba(245, 245, 245, 0.6);
+    background: rgba(245, 245, 245, 0.8);
 }
+
+label{
+    color: black;
+}
+
+#accountPictureBox{
+    padding: 15px;
+    background: rgba(245, 245, 245, 0.8);
+    border-radius: 15px;
+}
+
+
+#accountphoto{
+    width: 100%;
+}
+
+.panel{
+    padding: 0;
+}
+
+#playedGameBox{
+    border-bottom: solid 1px teal;
+}
+
+.playedGame{
+    margin: 10px;
+}
+
+.playedGame{
+    height: 50px;
+}
+
+.gameBtn{
+    margin: 5px;
+}
+
+.carousel .carousel-item {
+    width:40% !important;
+}
+
+.carousel-item {
+
+}
+
+
+
+footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: rgba(173, 173, 173, 0.4);
+    text-decoration: none;
+    color: white;
+}
+
+.logo{
+    height: 50px;
+}
+
+@media only screen and (max-width: 1120px) {
+    .carousel-item{
+        width: 100% !important;
+    }
+
+    footer{
+        display:none;
+    }
+}
+
+.infodiv{
+    margin: 10ox;
+}
+
+/*.carousel{*/
+    /*width: 100%;*/
+/*}*/
+
+/*.carousel img{*/
+    /*width: 400px;*/
+/*}*/
