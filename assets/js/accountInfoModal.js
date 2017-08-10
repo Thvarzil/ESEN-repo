@@ -1,9 +1,9 @@
-var games = ["LoL", "DOTA", "CS"];
 
+
+//store teams in here
 var teams = {
     LoL: ["Cloud9 (LoL)", "SKTT1", "Koo Tigers"],
-    DOTA: ["Cloud9 (DotA)", "CompLexity", "Digital Chaos"],
-    CS: ["Cloud9 (CS)", "Fnatic", "Team Liquid"]
+    DOTA: ["Cloud9 (DotA)", "CompLexity", "Digital Chaos"]
 };
 
 var chosen = {
@@ -58,17 +58,7 @@ function gameBtnClicked(input, target) {
                 $(".teamPanel").append(teamBtn);
             }
         }
-        if(input==="Counter Strike"){
-            for(var i = 0; i < teams.CS.length; i++){
-                var teamBtn = $("<button>");
 
-                teamBtn.attr("class", "btn btn-success teamBtn");
-                teamBtn.attr("data-team", teams.CS[i]);
-                teamBtn.text(teams.CS[i]);
-
-                $(".teamPanel").append(teamBtn);
-            }
-        }
     }
     console.log(chosen);
     // target.prop("disabled", true);
@@ -124,10 +114,19 @@ $(".gameBtn").on("click", function () {
     gameBtnClicked(choice, target);
 });
 
+function createUser(){
+
+//    Kelcey: So I was thinking you could use this function to save user info to the database.
+//    I also put a redirect to the landing page in the on click down below
+
+}
+
+
 $(document).on("click", ".teamBtn", function () {
+    console.log("Help, Ive been clicked!!");
     var target = this;
     var choice = target.dataset.team;
-    teamBtnClicked(choice, target);
+    teamBtnClicked(choice);
 });
 
 $(document).on("ready", function(){
@@ -136,4 +135,6 @@ $(document).on("ready", function(){
 
 $("#modal-close").on("click", function(){
     populateFavorites();
+    createUser();
+    window.location.href="landing.html";
 });
