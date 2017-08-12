@@ -20,9 +20,19 @@ body{
     margin: 0 10px 0 10px;
 }
 
+.btn-flat{
+    color: whitesmoke;
+    font-size: 12pt;
+
+}
+
 #logo{
     height: inherit;
     width: auto;
+}
+
+.newsfeed{
+    top: -110px;
 }
 
 .panel{
@@ -76,10 +86,8 @@ label{
 
 }
 
-
-
 footer{
-    position: fixed;
+    position:relative;
     bottom: 0;
     width: 100%;
     background: rgba(173, 173, 173, 0.4);
@@ -89,6 +97,7 @@ footer{
 
 .logo{
     height: 50px;
+    margin: 10px;
 }
 
 @media only screen and (max-width: 1120px) {
@@ -103,6 +112,16 @@ footer{
 
 .infodiv{
     margin: 10px;
+}
+
+#button-collapse{
+    top: -3px;
+    overflow: visible;
+}
+
+#button-collapse img{
+    height: 32px;
+    width: auto;
 }
 
 /*.carousel{*/
