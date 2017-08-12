@@ -153,6 +153,7 @@ var chosen = {
     games: [],
     teams: []
 };
+console.log(chosen);
 
 // League api
 var proxy = 'https://cors-anywhere.herokuapp.com/';
