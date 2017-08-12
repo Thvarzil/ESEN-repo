@@ -1,4 +1,14 @@
 
+var config = {
+    apiKey: "AIzaSyB8ssYN0NY7kolATwvynIfBquGiSFy-Q0M",
+    authDomain: "esen-dfd9c.firebaseapp.com",
+    databaseURL: "https://esen-dfd9c.firebaseio.com",
+    projectId: "esen-dfd9c",
+    storageBucket: "esen-dfd9c.appspot.com",
+    messagingSenderId: "51140866720"
+};
+firebase.initializeApp(config);
+var userbase = firebase.database();
 
 //store teams in here
 var teams = {
@@ -116,8 +126,7 @@ $(".gameBtn").on("click", function () {
 
 function createUser(){
 
-//    Kelcey: So I was thinking you could use this function to save user info to the database.
-//    I also put a redirect to the landing page in the on click down below
+var userbase
 
 }
 
