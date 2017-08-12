@@ -31,6 +31,14 @@ body{
     width: auto;
 }
 
+.esenheader{
+    background: rgba(173, 173, 173, 0.4) !important;
+}
+
+.col-12{
+    padding-left: 15px;
+    padding-right: 15px;
+}
 .newsfeed{
     top: -110px;
 }
