@@ -17,7 +17,7 @@
   //collect data from form and store in firebase
 
 
-  $('#modal-close').on('click', function(e){
+  $('#modalBtn').on('click', function(e){
     e.preventDefault();
     console.log('add user got clicked');
     var data;
@@ -47,27 +47,40 @@
         //   alert("There is already an account associated with that password.");
         // }
         if (data[i].email === email && data[i].password === password) {
-          alert("You already have an account. Both email and password match, therefore you will be logged in.");
+          // alert("You already have an account. Both email and password match, therefore you will be logged in.");
           loginState = true;
+          window.location.href = "landing.html";
         }
       };
       if (!loginState) {
-          //add new users to list
-          data.push({username: username
-                     ,email: email
-                     ,password: password});
-        //stringify data 
-        console.log(data);
-        var storeData = JSON.stringify(data);
-        console.log(storeData);
-        //Set Data
-        database.ref("/users").set({
-          //adds stringified data to array in firebase 
-          users: storeData
-        });
-      }else{
-        alert("You have been logged in!");
-      }
+          // load modal1 window
+          window.location.href = "#modal1";
+          //store the variables collected from the form to the Local Stoage
+            sessionStorage.setItem("username", username);
+            sessionStorage.setItem("email", email);
+            sessionStorage.setItem("password", password);
+            
+          // Console log each of the user inputs to confirm we are receiving them correctly
+            console.log(username);
+            console.log(email);
+            console.log(password);
+            
+          //add new users to list in firebase
+          // data.push({username: username
+          //            ,email: email
+          //            ,password: password});
+          // //stringify data 
+          // console.log(data);
+          // var storeData = JSON.stringify(data);
+          // console.log(storeData);
+          // //Set Data
+          // database.ref("/users").set({
+          //   //adds stringified data to array in firebase 
+          //   users: storeData
+          // });
+        }else{
+          alert("You have been logged in!");
+        };
     });
     //==================end of 'adding LOGIN'===================
 });
@@ -206,7 +219,7 @@ function gameBtnClicked(input, target) {
     if (alreadyChosen === false) {
         chosen.games.push(input);
         console.log("moving on");
-        var newBtn = $("<button>");
+        var newBtn = $("<button style='margin-left: 20px;'>");
 
         newBtn.attr("class", "btn btn-success");
 //    add in ability to unselect option
@@ -294,10 +307,41 @@ $(".gameBtn").on("click", function () {
 });
 
 function createUser(){
+  //get session storage data
 
-var userbase
 
-}
+    var password = sessionStorage.getItem("password");
+    var email = sessionStorage.getItem("email");
+    var username = sessionStorage.getItem("username");
+    //add info to firebase array
+    database.ref("/users").once("value", function(snapshot){
+      
+      data = snapshot.val().users;
+      //We need it as a JS object...so that it doesn't read it as a string we are parsing it here
+      data = JSON.parse(data);
+      
+      if(data === null){
+        data = [];
+      }
+      data.push({username: username
+                 ,email: email
+                 ,password: password
+                 ,teams: teams
+                 ,chosen: chosen});
+            //stringify data 
+            console.log(data);
+            var storeData = JSON.stringify(data);
+            console.log(storeData);
+            //Set Data
+            database.ref("/users").set({
+              //adds stringified data to array in firebase 
+              users: storeData
+            });
+      //load next window
+      window.location.href="landing.html";
+    });
+};
+
 
 
 $(document).on("click", ".teamBtn", function () {
@@ -314,5 +358,6 @@ $(document).on("ready", function(){
 $("#modal-close").on("click", function(){
     populateFavorites();
     createUser();
-    window.location.href="landing.html";
+    
+
 });
