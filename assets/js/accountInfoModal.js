@@ -119,21 +119,21 @@
    
 //======================end of member sign in==============
 
-var config = {
-    apiKey: "AIzaSyB8ssYN0NY7kolATwvynIfBquGiSFy-Q0M",
-    authDomain: "esen-dfd9c.firebaseapp.com",
-    databaseURL: "https://esen-dfd9c.firebaseio.com",
-    projectId: "esen-dfd9c",
-    storageBucket: "esen-dfd9c.appspot.com",
-    messagingSenderId: "51140866720"
-};
-firebase.initializeApp(config);
+// var config = {
+//     apiKey: "AIzaSyB8ssYN0NY7kolATwvynIfBquGiSFy-Q0M",
+//     authDomain: "esen-dfd9c.firebaseapp.com",
+//     databaseURL: "https://esen-dfd9c.firebaseio.com",
+//     projectId: "esen-dfd9c",
+//     storageBucket: "esen-dfd9c.appspot.com",
+//     messagingSenderId: "51140866720"
+// };
+// firebase.initializeApp(config);
 var userbase = firebase.database();
 
 //store teams in here
 var teams = {
-    LoL: ["Cloud9 (LoL)", "SKTT1", "Koo Tigers"],
-    DOTA: ["Cloud9 (DotA)", "CompLexity", "Digital Chaos"]
+    LoL: [],
+    DOTA: []
 };
 
 var chosen = {
@@ -141,6 +141,55 @@ var chosen = {
     teams: []
 };
 
+// League api
+var proxy = 'https://cors-anywhere.herokuapp.com/';
+var apiKey = "sm6y3s3epyau9hncxmkueq56";
+var queryURL = "http://api.sportradar.us/lol-t1/en/tournaments/sr:tournament:2454/info.json?api_key=" + apiKey;
+
+    $.ajax({
+
+        url: proxy + queryURL,
+        complete:function(data) {
+            var gameInfo = {
+                game: data.responseJSON.tournament.sport.name,
+                tournament: data.responseJSON.season.name,
+            };
+            //Store the team names JSON object in a variable
+            var teamsList = data.responseJSON.groups[0].teams;
+            console.log(gameInfo.game);
+            console.log(gameInfo.tournament);
+            for (var i = 0; i < teamsList.length; i++) {
+                //Push the team names into the teams object
+                teams.LoL.push(teamsList[i].name);
+            }
+            console.log(teams.LoL);
+        }
+    });
+
+//DOTA api
+var proxy = 'https://cors-anywhere.herokuapp.com/';
+var apiKey = "tcs9fj7nprkjysu95cxnpg2n";
+var queryURL = "http://api.sportradar.us/dota2-t1/en/tournaments/sr:tournament:14029/info.json?api_key=" + apiKey;
+
+$.ajax({
+    url: proxy + queryURL,
+    complete:function(data){
+        console.log(data);
+        var gameInfo = {
+            game: data.responseJSON.tournament.sport.name,
+            tournament: data.responseJSON.season.name,
+        };
+        //Store the team names JSON object in a variable
+        var teamsList = data.responseJSON.groups[0].teams;
+        console.log(gameInfo.game);
+        console.log(gameInfo.tournament);
+        for (var i = 0; i < teamsList.length; i++) {
+            //Push the team names into the teams object
+            teams.DOTA.push(teamsList[i].name);
+        }
+        console.log(teams.DOTA);
+    }
+});
 
 
 function gameBtnClicked(input, target) {
