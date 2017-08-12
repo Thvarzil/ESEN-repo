@@ -10249,7 +10249,103 @@ if ( !noGlobal ) {
 }
 
 
-
-
 return jQuery;
 } );
+
+	$(function(){
+
+		$.getJSON('https://api.twitch.tv/kraken/streams/nalcs1?client_id=pomtr3i2bvwm8bmhehoqgcvu5oye1y').done(function(data){
+			console.log(data);
+
+			if (data.stream===null) {
+				$('#nalcs1Status').html('NALCS1 is offline');
+			}else{
+				$('#nalcs1Status').html("NALCS1 is STREAMING!");
+			}
+		});
+
+
+		$.getJSON('https://api.twitch.tv/kraken/streams/nalcs2?client_id=pomtr3i2bvwm8bmhehoqgcvu5oye1y').done(function(data){
+			console.log(data);
+
+			if (data.stream===null) {
+				$('#nalcs2Status').html('NALCS2 is offline');
+			}else{
+				$('#nalcs2Status').html("NALCS2 is STREAMING!");
+			}
+		});
+
+
+
+		$.getJSON('https://api.twitch.tv/kraken/streams/eulcs1?client_id=pomtr3i2bvwm8bmhehoqgcvu5oye1y').done(function(data){
+			console.log(data);
+
+			if (data.stream === null) {
+				$('#eulcs1Status').html('EULCS1 is offline');
+			}else{
+				$('#eulcs1Status').html("EULCS1 is STREAMING!");
+			}
+		});
+
+		$.getJSON('https://api.twitch.tv/kraken/streams/eulcs2?client_id=pomtr3i2bvwm8bmhehoqgcvu5oye1y').done(function(data){
+			console.log(data);
+
+			if (data.stream === null) {
+				$('#eulcs2Status').html('EULCS2 is offline');
+			}else{
+				$('#eulcs2Status').html("EULCS2 is STREAMING!");
+			}
+		});
+
+		$.getJSON('https://api.twitch.tv/kraken/streams/lpl1?client_id=pomtr3i2bvwm8bmhehoqgcvu5oye1y').done(function(data){
+			console.log(data);
+
+			if (data.stream === null) {
+				$('#lpl1Status').html('LPL1 is offline');
+			}else{
+				$('#lpl1Status').html("LPL1 is STREAMING!");
+			}
+		});
+
+		$.getJSON('https://api.twitch.tv/kraken/streams/lpl2?client_id=pomtr3i2bvwm8bmhehoqgcvu5oye1y').done(function(data){
+			console.log(data);
+
+			if (data.stream === null) {
+				$('#lpl2Status').html('LPL2 is offline');
+			}else{
+				$('#lpl2Status').html("LPL2 is STREAMING!");
+			}
+		});
+
+		$.getJSON('https://api.twitch.tv/kraken/streams/lck1?client_id=pomtr3i2bvwm8bmhehoqgcvu5oye1y').done(function(data){
+			console.log(data);
+
+			if (data.stream === null) {
+				$('#lck1Status').html('LCK1 is offline');
+			}else{
+				$('#lck1Status').html("LCK1 is STREAMING!");
+			}
+		});
+
+		$.getJSON('https://api.twitch.tv/kraken/streams/lck2?client_id=pomtr3i2bvwm8bmhehoqgcvu5oye1y').done(function(data){
+			console.log(data);
+
+			if (data.stream === null) {
+				$('#lck2Status').html('LCK2 is offline');
+			}else{
+				$('#lck2Status').html("LCK2 is STREAMING!");
+			}
+		});
+
+		$.getJSON('https://api.twitch.tv/kraken/streams/dota2ti?client_id=pomtr3i2bvwm8bmhehoqgcvu5oye1y').done(function(data){
+			console.log(data);
+
+			if (data.stream === null) {
+				$('#dota2tiStatus').html('DOTA2 is offline');
+			}else{
+				$('#dota2tiStatus').html("DOTA2 is STREAMING!");
+			}
+		});
+
+
+	});
