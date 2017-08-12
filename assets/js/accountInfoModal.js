@@ -76,6 +76,8 @@ $('#modal-close').on('click', function (e) {
                 username: username
                 , email: email
                 , password: password
+                , games: chosen.games
+                , teams: chosen.teams
             });
             //stringify data
             console.log(data);
@@ -379,8 +381,8 @@ function createUser(){
       data.push({username: username
                  ,email: email
                  ,password: password
-                 ,teams: chosen.teams
-                 ,games: chosen.games});
+                 ,teams: teams
+                 ,chosen: chosen});
             //stringify data 
             console.log(data);
             var storeData = JSON.stringify(data);
