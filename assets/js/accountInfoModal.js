@@ -115,7 +115,7 @@
               console.log(emailMatch);
               //>>>load next page<<<
               window.location.href = "landing.html";
-            
+              sessionStorage.setItem("userNum", i);
             };
         };
           if (!emailMatch) {

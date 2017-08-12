@@ -135,6 +135,11 @@ footer{
 #modal-close{
     color: teal;
 }
+
+.teamBtn{
+    margin-right: 10px;
+    margin-top: 10px;
+}
 /*.carousel{*/
     /*width: 100%;*/
 /*}*/
