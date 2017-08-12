@@ -10,6 +10,30 @@
   };
   firebase.initializeApp(config);
 
+//  Enables buttons on signin page only if required fields are filled
+$(".signin").on("input", function(){
+    console.log("a value changed");
+  if($("#email-signin").val()!==""&&$("#password-signin").val()!==""){
+      $("#signin").prop("disabled", false);
+  }
+  else{
+      $("#signin").prop("disabled", true);
+  }
+});
+
+//  Enables buttons on signin page only if required fields are filled
+$(".signup").on("input", function(){
+    console.log("a value changed");
+    if($("#email-input").val()!==""&&$("#password-confirm").val()!==""&&$("#password-input").val()!==""&&$("#name-input").val()!==""){
+        console.log("we are gonna fix the button now");
+        $("#modalBtn").prop("disabled", false);
+    }
+    else{
+        $("#modalBtn").prop("disabled", true);
+    }
+});
+
+
  //sign-up
   //Variables
   var database = firebase.database();
