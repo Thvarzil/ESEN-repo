@@ -124,6 +124,9 @@ footer{
     width: auto;
 }
 
+#modal-close{
+    color: teal;
+}
 /*.carousel{*/
     /*width: 100%;*/
 /*}*/

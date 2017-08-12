@@ -132,6 +132,16 @@
    
 //======================end of member sign in==============
 
+var config = {
+    apiKey: "AIzaSyB8ssYN0NY7kolATwvynIfBquGiSFy-Q0M",
+    authDomain: "esen-dfd9c.firebaseapp.com",
+    databaseURL: "https://esen-dfd9c.firebaseio.com",
+    projectId: "esen-dfd9c",
+    storageBucket: "esen-dfd9c.appspot.com",
+    messagingSenderId: "51140866720"
+};
+firebase.initializeApp(config);
+var userbase = firebase.database();
 
 //store teams in here
 var teams = {
@@ -250,6 +260,7 @@ $(".gameBtn").on("click", function () {
 function createUser(){
   //get session storage data
 
+
     var password = sessionStorage.getItem("password");
     var email = sessionStorage.getItem("email");
     var username = sessionStorage.getItem("username");
@@ -281,6 +292,7 @@ function createUser(){
       window.location.href="landing.html";
     });
 };
+
 
 
 $(document).on("click", ".teamBtn", function () {
