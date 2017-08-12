@@ -1,32 +1,95 @@
 //connect to firebase
-  // Initialize Firebase
-  var config = {
+// Initialize Firebase
+var config = {
     apiKey: "AIzaSyB8ssYN0NY7kolATwvynIfBquGiSFy-Q0M",
     authDomain: "esen-dfd9c.firebaseapp.com",
     databaseURL: "https://esen-dfd9c.firebaseio.com",
     projectId: "esen-dfd9c",
     storageBucket: "esen-dfd9c.appspot.com",
     messagingSenderId: "51140866720"
-  };
-  firebase.initializeApp(config);
+};
+firebase.initializeApp(config);
 
- //sign-up
-  //Variables
-  var database = firebase.database();
+//store teams in here
+var teams = {
+    LoL: ["Cloud9 (LoL)", "SKTT1", "Koo Tigers"],
+    DOTA: ["Cloud9 (DotA)", "CompLexity", "Digital Chaos"]
+};
+
+var chosen = {
+    games: [],
+    teams: []
+};
+
+
+//sign-up
+//Variables
+var database = firebase.database();
 //===============ON CLICK on SIGN UP FORM====================================
-  //collect data from form and store in firebase
+//collect data from form and store in firebase
 
 
-  $('#modalBtn').on('click', function(e){
+$('#modal-close').on('click', function (e) {
+
     e.preventDefault();
     console.log('add user got clicked');
     var data;
     var username = $('#name-input').val().trim();
-    var email = $("#email-input").val().trim();;
-    var password = $("#password-input").val().trim();;
+    var email = $("#email-input").val().trim();
+    ;
+    var password = $("#password-input").val().trim();
+    ;
+    var games = chosen.games;
+    var teams = chosen.teams;
     var loginState = false;
 
     // ===================adding LOGIN=================================
+<<<<<<< HEAD
+    database.ref("/users").once("value", function (snapshot) {
+
+        data = snapshot.val().users;
+        //We need it as a JS object...so that it doesn't read it as a string we are parsing it here
+        data = JSON.parse(data);
+
+        if (data === null) {
+            data = [];
+        }
+
+        //log string to console
+        console.log(data);
+        for (var i = 0; i < data.length; i++) {
+            if (data[i].email === email) {
+                alert("There is already an account associated with that email.");
+            }
+            // if (data[i].password === password) {
+            //   alert("There is already an account associated with that password.");
+            // }
+            if (data[i].email === email && data[i].password === password) {
+                alert("You already have an account. Both email and password match, therefore you will be logged in.");
+                loginState = true;
+            }
+        }
+        ;
+        if (!loginState) {
+            //add new users to list
+            data.push({
+                username: username
+                , email: email
+                , password: password
+            });
+            //stringify data
+            console.log(data);
+            var storeData = JSON.stringify(data);
+            console.log(storeData);
+            //Set Data
+            database.ref("/users").set({
+                //adds stringified data to array in firebase
+                users: storeData
+            });
+        } else {
+            alert("You have been logged in!");
+        }
+=======
     database.ref("/users").once("value", function(snapshot){
       
       data = snapshot.val().users;
@@ -87,18 +150,17 @@
 //======================END OF SIGN UP ON CLICK=========================================
 
 
-
 //=====================MEMBER SIGN IN=====================
 //collect data from form and compare with data already in firebase
-  $('#signin').on('click', function(noReset){
+$('#signin').on('click', function (noReset) {
     noReset.preventDefault();
     //store variables
     var memberemail = $('#email-signin').val().trim();
-      console.log(memberemail);
+    console.log(memberemail);
     var memberpassword = $('#password-signin').val().trim();
-      console.log(memberpassword);
+    console.log(memberpassword);
     // check data in firebase
-    database.ref('/users').once('value', function(snapshot){
+    database.ref('/users').once('value', function (snapshot) {
         data = snapshot.val().users;
         //We need it as a JS object...so that it doesn't read it as a string we are parsing it here
         data = JSON.parse(data);
@@ -107,29 +169,31 @@
 
         for (var i = 0; i < data.length; i++) {
             console.log(data[i]);
-            
-            if (data[i].email === memberemail && data[i].password === memberpassword) {
-              // alert("Validated! You will be redirected to the member page.")
-              var emailMatch = true;
-              var passMatch = true;
-              console.log(emailMatch);
-              //>>>load next page<<<
-              window.location.href = "landing.html";
-            
-            };
-        };
-          if (!emailMatch) {
-            alert("Your email doesn't match.");
-          };
-          if (!passMatch) {
-            alert("Your password doesn't match.");
-          }
-          
-    });
-  });
-    
 
-   
+            if (data[i].email === memberemail && data[i].password === memberpassword) {
+                // alert("Validated! You will be redirected to the member page.")
+                var emailMatch = true;
+                var passMatch = true;
+                console.log(emailMatch);
+                //>>>load next page<<<
+                window.location.href = "landing.html";
+
+            }
+            ;
+        }
+        ;
+        if (!emailMatch) {
+            alert("Your email doesn't match.");
+        }
+        ;
+        if (!passMatch) {
+            alert("Your password doesn't match.");
+        }
+
+    });
+});
+
+
 //======================end of member sign in==============
 
 // var config = {
@@ -143,16 +207,6 @@
 // firebase.initializeApp(config);
 var userbase = firebase.database();
 
-//store teams in here
-var teams = {
-    LoL: [],
-    DOTA: []
-};
-
-var chosen = {
-    games: [],
-    teams: []
-};
 
 // League api
 var proxy = 'https://cors-anywhere.herokuapp.com/';
@@ -204,7 +258,6 @@ $.ajax({
     }
 });
 
-
 function gameBtnClicked(input, target) {
 
     var alreadyChosen = false;
@@ -228,8 +281,8 @@ function gameBtnClicked(input, target) {
 
         $(".chosenPanel").append(newBtn);
 
-        if(input==="League of Legends"){
-            for(var i = 0; i < teams.LoL.length; i++){
+        if (input === "League of Legends") {
+            for (var i = 0; i < teams.LoL.length; i++) {
                 var teamBtn = $("<button>");
 
                 teamBtn.attr("class", "btn btn-success teamBtn");
@@ -239,8 +292,8 @@ function gameBtnClicked(input, target) {
                 $(".teamPanel").append(teamBtn);
             }
         }
-        if(input==="Defense of the Ancients"){
-            for(var i = 0; i < teams.DOTA.length; i++){
+        if (input === "Defense of the Ancients") {
+            for (var i = 0; i < teams.DOTA.length; i++) {
                 var teamBtn = $("<button>");
 
                 teamBtn.attr("class", "btn btn-success teamBtn");
@@ -286,7 +339,7 @@ function teamBtnClicked(input, target) {
 }
 
 
-function populateFavorites(){
+function populateFavorites() {
     $("#interestBox").empty();
 
     var gamediv = $("<div>");
@@ -326,8 +379,8 @@ function createUser(){
       data.push({username: username
                  ,email: email
                  ,password: password
-                 ,teams: teams
-                 ,chosen: chosen});
+                 ,teams: chosen.teams
+                 ,games: chosen.games});
             //stringify data 
             console.log(data);
             var storeData = JSON.stringify(data);
@@ -351,13 +404,12 @@ $(document).on("click", ".teamBtn", function () {
     teamBtnClicked(choice);
 });
 
-$(document).on("ready", function(){
+$(document).on("ready", function () {
     populateFavorites();
 });
 
-$("#modal-close").on("click", function(){
+$("#modal-close").on("click", function () {
     populateFavorites();
     createUser();
-    
 
 });
